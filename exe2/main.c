@@ -58,7 +58,7 @@ void trigger_sensors() {
 
 int main() {
     stdio_init_all();
-    sleep_ms(2000); 
+    sleep_ms(2000);
 
     gpio_init(TRIGGER_PIN_1); gpio_set_dir(TRIGGER_PIN_1, GPIO_OUT); gpio_put(TRIGGER_PIN_1, 0);
     gpio_init(ECHO_PIN_1);    gpio_set_dir(ECHO_PIN_1, GPIO_IN);
@@ -84,18 +84,18 @@ int main() {
 
         if (fim_echo_1) {
             int64_t dt_1 = absolute_time_diff_us(echo_start_1, echo_end_1);
-            float distancia_1 = (dt_1 * 0.0343f) / 2.0f;
-            printf("Sensor 1 - Distância: %.2f cm\n", distancia_1);
+            int distancia_1 = (int) ((dt_1 * 0.0343) / 2.0);
+            printf("Sensor 1 - dist: %d cm\n", distancia_1);
         } else if (timeout_error_1) {
-            printf("Sensor 1 - Falha na medição\n");
+            printf("Sensor 1 - Falha\n");
         }
 
         if (fim_echo_2) {
             int64_t dt_2 = absolute_time_diff_us(echo_start_2, echo_end_2);
-            float distancia_2 = (dt_2 * 0.0343f) / 2.0f;
-            printf("Sensor 2 - Distância: %.2f cm\n", distancia_2);
+            int distancia_2 = (int) ((dt_2 * 0.0343) / 2.0);
+            printf("Sensor 2 - dist: %d cm\n", distancia_2);
         } else if (timeout_error_2) {
-            printf("Sensor 2 - Falha na medição\n");
+            printf("Sensor 2 - Falha\n");
         }
 
         sleep_ms(500); 
