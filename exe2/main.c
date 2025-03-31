@@ -93,7 +93,7 @@ int main() {
         if (fim_echo_1) {
             int64_t dt_1 = absolute_time_diff_us(echo_start_1, echo_end_1);
             int distancia_1 = (int) ((dt_1 * 0.0343) / 2.0);
-            printf("Sensor 2 - dist: %d cm\n", distancia_2);
+            printf("Sensor 2 - dist: %d cm\n", distancia_1);
         } else if (timeout_error_1) {
             printf("Sensor 2 - Falha\n");
         }
